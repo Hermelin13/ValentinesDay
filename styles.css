@@ -1,0 +1,249 @@
+:root {
+  --rose: #ff6f91;
+  --peach: #ffd1dc;
+  --sun: #ffe9a6;
+  --mint: #d7fbe8;
+  --ink: #2d1d33;
+  --shadow: rgba(45, 29, 51, 0.16);
+  --card: #fff7fb;
+  --accent: #ff4d79;
+  --accent-dark: #e03664;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Lucida Sans", "Lucida Grande", Arial, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, var(--sun), var(--peach) 50%, #fff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  background: radial-gradient(circle, rgba(255, 111, 145, 0.3), transparent 70%);
+  top: -20vmax;
+  right: -10vmax;
+  filter: blur(12px);
+  z-index: 0;
+  animation: float 10s ease-in-out infinite;
+}
+
+.card {
+  width: min(640px, 92vw);
+  background: var(--card);
+  border-radius: 28px;
+  padding: 2.5rem 2.2rem 2.8rem;
+  box-shadow: 0 30px 60px var(--shadow);
+  position: relative;
+  z-index: 1;
+  border: 2px solid rgba(255, 111, 145, 0.2);
+  animation: pop 0.8s ease;
+}
+
+.hero h1 {
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  margin: 0.4rem 0 0.6rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  font-size: 0.72rem;
+  margin: 0;
+  color: var(--accent-dark);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.stage {
+  margin-top: 2.2rem;
+  position: relative;
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 70%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.ask {
+  display: grid;
+  gap: 1.6rem;
+  justify-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.bubble {
+  background: #fff;
+  padding: 1rem 1.4rem;
+  border-radius: 999px;
+  border: 2px dashed rgba(255, 77, 121, 0.35);
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(255, 77, 121, 0.15);
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  border: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(255, 77, 121, 0.5);
+  outline-offset: 3px;
+}
+
+.yes {
+  background: linear-gradient(120deg, var(--accent), var(--rose));
+  color: white;
+  box-shadow: 0 10px 20px rgba(255, 77, 121, 0.3);
+}
+
+.no {
+  background: #fff;
+  color: var(--accent-dark);
+  border: 2px solid rgba(255, 77, 121, 0.4);
+  box-shadow: 0 8px 14px rgba(45, 29, 51, 0.12);
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.result {
+  margin-top: 2.4rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.result h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.result-line {
+  margin: 0;
+}
+
+.celebration {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+  font-size: 1.6rem;
+}
+
+.celebration span {
+  animation: popHeart 0.9s ease-in-out infinite;
+}
+
+.celebration span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.celebration span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.celebration span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.celebration span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.footer {
+  margin-top: 1.6rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popHeart {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.2);
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 2rem 1.6rem 2.2rem;
+  }
+
+  .bubble {
+    border-radius: 20px;
+  }
+}
