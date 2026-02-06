@@ -9,10 +9,16 @@ const noMessages = [
   "Okay but hear me out: pizza and cuddles.",
   "The 'no' option has been outsourced to the 'yes' option.",
   "Plot twist: the only valid answer is adorable.",
+  "That button is shy. Like me when you wink.",
+  "Plot twist: the 'no' is reserved for my shirt later.",
+  "Nice try. The universe says: pick the spicy option.",
+  "If you click yes, I owe you a kiss and a snack.",
+  "This button only flirts back in the other direction.",
 ];
 
 let noCount = 0;
-const reactionDelay = 220;
+let lastMessageIndex = 0;
+const reactionDelay = 240;
 const moveCooldown = 200;
 let lastMoveAt = 0;
 let pendingMoveId = null;
@@ -84,7 +90,13 @@ noBtn.addEventListener("mouseenter", (event) => {
 
 noBtn.addEventListener("click", (event) => {
   scheduleMove(event);
-  bubble.textContent = noMessages[noCount % noMessages.length];
+  const maxIndex = Math.min(8, noMessages.length);
+  let nextIndex = Math.floor(Math.random() * maxIndex) + 1;
+  if (nextIndex === lastMessageIndex) {
+    nextIndex = nextIndex === maxIndex ? nextIndex - 1 : nextIndex + 1;
+  }
+  bubble.textContent = noMessages[nextIndex - 1];
+  lastMessageIndex = nextIndex;
   noCount += 1;
 });
 
