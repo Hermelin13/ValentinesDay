@@ -4,16 +4,16 @@ const noBtn = document.getElementById("noBtn");
 const result = document.getElementById("result");
 
 const noMessages = [
-  "That button seems to be allergic to your cursor.",
-  "Nice try. The universe says: maybe click the other one?",
-  "Okay but hear me out: pizza and cuddles.",
-  "The 'no' option has been outsourced to the 'yes' option.",
-  "Plot twist: the only valid answer is adorable.",
-  "That button is shy. Like me when you wink.",
-  "Plot twist: the 'no' is reserved for my shirt later.",
-  "Nice try. The universe says: pick the spicy option.",
-  "If you click yes, I owe you a kiss and a snack.",
-  "This button only flirts back in the other direction.",
+  "Tohle tlačítko je asi alergické na tvůj kurzor.",
+  "Hezký pokus, ale asi budeš muset říct 'ano'?",
+  "Dobře, ale poslouchej: pizza a Bridgertoni? Dobrý plán, ne?",
+  "Jako fakt? Stále jsem tě nepřesvědčil? Co když ti řeknu, že mám i čokoládu?",
+  "Proč ne? Jsem skvělá společnost a mám spoustu humoru. A taky kočky.",
+  "To tlačítko je stydlivé. Jako já, když se na mě díváš.",
+  "Stále nic? Co když ti řeknu, že můžu být tvůj osobní cheerleader a fandit ti ve všem, co děláš?",
+  "O co ti jde? Se mnou budeš mít nekonečné množství zábavy a dobrodružství.",
+  "Když klikneš ano, dlužím ti pusu a svačinu.",
+  "Úplatek nechceš?",
 ];
 
 let noCount = 0;
@@ -90,19 +90,15 @@ noBtn.addEventListener("mouseenter", (event) => {
 
 noBtn.addEventListener("click", (event) => {
   scheduleMove(event);
-  const maxIndex = Math.min(8, noMessages.length);
-  let nextIndex = Math.floor(Math.random() * maxIndex) + 1;
-  if (nextIndex === lastMessageIndex) {
-    nextIndex = nextIndex === maxIndex ? nextIndex - 1 : nextIndex + 1;
-  }
-  bubble.textContent = noMessages[nextIndex - 1];
-  lastMessageIndex = nextIndex;
+  const nextIndex = noCount % noMessages.length;
+  bubble.textContent = noMessages[nextIndex];
+  lastMessageIndex = nextIndex + 1;
   noCount += 1;
 });
 
 yesBtn.addEventListener("click", () => {
   result.hidden = false;
-  bubble.textContent = "Confirmed: you are officially my favorite human.";
+  bubble.textContent = "Super!!!! A teď už jen klikni na ty srdíčka a kytice a představuj si, že něco delají nebo jak spolu budeme mít krásný Valentýn!";
   yesBtn.disabled = true;
   noBtn.disabled = true;
   yesBtn.style.transform = "scale(1.05)";
